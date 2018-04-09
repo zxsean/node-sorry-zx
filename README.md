@@ -1,13 +1,14 @@
 # 核心代码部分参考
-#[node-sorry](https://github.com/q809198545/node-sorry)
 
-##如何快速添加新gif
-###1. 添加模板
+# [node-sorry](https://github.com/q809198545/node-sorry)
+
+## 如何快速添加新gif
+### 1. 添加模板
 ```
 public/templates/xxxx/template.mp4
 public/templates/xxxx/template.ejs(ass文件修改后缀)
 ```
-###2. 修改configs下的config.json即可快速添加新模板
+### 2. 修改configs下的config.json即可快速添加新模板
 ```
 └─public                     // 静态资源
    └─configs                 // 模板配置
@@ -15,7 +16,7 @@ public/templates/xxxx/template.ejs(ass文件修改后缀)
 
 ---
 
->#以下引用node-sorry
+># 以下引用node-sorry
 
 # node-sorry
 
