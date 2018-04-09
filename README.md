@@ -1,8 +1,9 @@
 # 核心代码部分参考
 [node-sorry](https://github.com/q809198545/node-sorry)
 
-## 以下引用node-sorry
-```
+# 以下引用node-sorry
+---
+
 # node-sorry
 
 `sorry有钱真的可以为所欲为`
@@ -157,4 +158,3 @@ template.ejs   替换成新的字幕模板
 最后保存为template.ejs
 
 现在这个网站就可以制作新的gif了
-```
