@@ -1,0 +1,72 @@
+{
+    "sorry": {
+        "name": "为所欲为",
+        "path": "/sorry/",
+        "talk": {
+            "第一句": "没有钱啊 肯定要做的啊",
+            "第二句": "不做的话没有钱用"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "wangjingze": {
+        "name": "王境泽",
+        "path": "/wangjingze/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "jinkela": {
+        "name": "金坷垃",
+        "path": "/jinkela/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "marmot": {
+        "name": "土拨鼠",
+        "path": "/marmot/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "dagong": {
+        "name": "窃格瓦拉",
+        "path": "/dagong/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "diandongche": {
+        "name": "偷电动车",
+        "path": "/diandongche/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    },
+    "kongming": {
+        "name": "诸葛孔明",
+        "path": "/kongming/",
+        "talk": {
+            "第一句": "1111 肯定要做的啊",
+            "第二句": "3333"
+        },
+        "title": "在线生成Sorry,动图",
+        "tips": "在线生成Sorry,动图"
+    }
+}
