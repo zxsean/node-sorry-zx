@@ -8,6 +8,7 @@ var execSync = require('child_process').execSync;
 
 // 默认大小
 const __SIZE = 300;
+const __EVENT_END = "makegifevent";
 
 // 生成对应字幕
 function renderAss(templateName, sentences, filename) {
@@ -63,7 +64,7 @@ function makeGifWithFfmpeg(templateName, sentences, filename, myEmitter) {
                 execSync(cmd);
                 console.log("生成gif成功")
 
-                myEmitter.emit('event');
+                myEmitter.emit(__EVENT_END, filename);
             } catch (e) {
                 console.log(e);
             }
@@ -79,11 +80,12 @@ function renderGif(templateName, sentences, myEmitter) {
     gifPath = rootPath + "/public/cache/" + filename
     var exists = fs.existsSync(rootPath + "/public/cache/" + filename)
     if (exists) {
-        myEmitter.emit('event');
-        return filename
+        // console.log("==================" + filename)
+        myEmitter.emit(__EVENT_END, filename);
+        // return filename
     } else {
         makeGifWithFfmpeg(templateName, sentences, filename, myEmitter)
-        return filename
+        // return filename
     }
 }
 
@@ -102,11 +104,12 @@ class Render {
             // 创建一个只针对这个action的
             const myEmitter = new EventEmitter();
 
-            myEmitter.once('event', () => {
+            myEmitter.once(__EVENT_END, (filename) => {
                 res.send('<p><a href="/cache/' + filename + '" target="_blank"><p>点击下载</p></a></p>');
             });
 
-            var filename = renderGif(name, sentences, myEmitter);
+            renderGif(name, sentences, myEmitter);
+            // var filename = renderGif(name, sentences, myEmitter);
             // res.send('<p><a href="/cache/' + filename + '" target="_blank"><p>点击下载</p></a></p>');
         });
     }
