@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var loadjsonconfig = require('../controller/loadjsonconfig');
+const loadjsonconfig = require('../controller/loadjsonconfig');
+const Render = require('../controller/render');
 
 // // json处理
 // var fs = require('fs');
@@ -43,19 +44,26 @@ var loadjsonconfig = require('../controller/loadjsonconfig');
 //   }
 // }
 
-loadjsonconfig();
+var _temp = new loadjsonconfig();
+configStr = loadjsonconfig.jsonConfig;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  console.log("index!!!!");
+  res.redirect('./sorry/');
+});
+
+//选择模板页面
+router.get('/:name', function (req, res, next) {
+  res.locals.name = "sorry";
   res.render('index',
     {
-      title: 'Express',
-      // test: configStr._tempStr,
-      // test2: configStr._tempStr2
-      test: "2",
-      test2: "2"
+      title: configStr[req.params.name].title,
+      sidebar_items: configStr.sidebar_items,
+      container_items: configStr[req.params.name].container_items
     });
 });
+
+//生成模板
+router.post('/:name/make', Render.action);
 
 module.exports = router;

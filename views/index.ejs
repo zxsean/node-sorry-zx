@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>
         <%= title %>
@@ -12,56 +13,36 @@
 </head>
 
 <body>
-    <h1>
-        <%= title %>
-    </h1>
-    <p>Welcome to
-        <%= title %>
-    </p>
-    <p>
-        <%- test %>
-    </p>
-    <%- test2 %>
-        <!-- Sidebar -->
-        <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right" style="display:none">
-            <button id="sidebar_close" class="w3-bar-item w3-large">&times;</button>
-            <a href="/sorry/" class="w3-bar-item w3-button">为所欲为</a>
-            <a href="/wangjingze/" class="w3-bar-item w3-button">王境泽</a>
-            <a href="/jinkela/" class="w3-bar-item w3-button">金坷垃</a>
-            <a href="/marmot/" class="w3-bar-item w3-button">土拨鼠</a>
-            <a href="/dagong/" class="w3-bar-item w3-button">窃格瓦拉</a>
-            <a href="/diandongche/" class="w3-bar-item w3-button">偷电动车</a>
-            <a href="/kongming/" class="w3-bar-item w3-button">诸葛孔明</a>
+    <!-- Sidebar -->
+    <div id="sidebar" class="w3-sidebar w3-bar-block w3-border-right" style="display:none">
+        <button id="sidebar_close" class="w3-bar-item w3-large">&times;</button>
+        <%- sidebar_items %>
+    </div>
+
+    <!-- Show Button -->
+    <div>
+        <button id="show_sidebar" class="w3-btn w3-circle w3-text-black w3-white w3-xlarge">☰</button>
+    </div>
+    <!-- Main Frame -->
+    <div class="w3-container w3-display-container w3-half">
+        <div class="w3-container">
+            <img src="/templates/<%- name %>/example.png" alt="Lights" style="width:100%">
+            <h1 class="w3-text-blue">在线生成Sorry,动图</h1>
         </div>
 
-        <!-- Show Button -->
-        <div>
-            <button id="show_sidebar" class="w3-btn w3-circle w3-text-black w3-white w3-xlarge">☰</button>
-        </div>
-        <!-- Main Frame -->
-        <div class="w3-container w3-display-container w3-half">
-            <div class="w3-container">
-                <img src="/templates/dagong/example.png" alt="Lights" style="width:100%">
-                <h1 class="w3-text-blue">在线生成Sorry,动图</h1>
-            </div>
-
-            <div class="w3-container">
-
-                <p>
-                    <label class="w3-text-blue">
-                        <b>w</b>
-                    </label>
-                    <input class="w3-input w3-border" name="first" type="text" placeholder="">
-                </p>
+        <div class="w3-container">
+            <!--配置-->
+            <%- container_items %>
 
                 <div id="result"></div>
 
                 <p>
                     <button id="submit_btn" class="w3-btn w3-blue">生成</button>
                 </p>
-            </div>
+        </div>
 
-            <script src="/javascripts/cookies.js"></script>
-            <script src="/javascripts/main.js"></script>
+        <script src="/javascripts/cookies.js"></script>
+        <script src="/javascripts/main.js"></script>
 </body>
+
 </html>
