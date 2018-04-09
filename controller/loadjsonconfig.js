@@ -28,7 +28,7 @@ function loadjsonconfig() {
     // 遍历
     for (var value in config) {
         // 创建边栏
-        console.log(config[value]);
+        // console.log(config[value]);
         jsonConfig.sidebar_items += util.format(__strtemplate_sidebar_items, config[value].path, config[value].name);
 
         // 创建对话
@@ -38,11 +38,13 @@ function loadjsonconfig() {
         jsonConfig[value].title = config[value].title;
 
         for (var i in config[value].talk) {
-            console.log(config[value].talk[i]);
+            // console.log(config[value].talk[i]);
             jsonConfig[value].container_items += util.format(__strtemplate_container_items, i, config[value].talk[i]);
-            console.log(jsonConfig[value].container_items + "___" + value);
+            // console.log(jsonConfig[value].container_items + "___" + value);
         }
     }
+    
+    console.log("读取配置完成");
 }
 
 // 导出

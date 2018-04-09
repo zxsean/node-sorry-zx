@@ -54,7 +54,7 @@ router.get('/', function (req, res, next) {
 
 //选择模板页面
 router.get('/:name', function (req, res, next) {
-  res.locals.name = "sorry";
+  res.locals.name = req.params.name;
   res.render('index',
     {
       title: configStr[req.params.name].title,
