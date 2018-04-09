@@ -36,6 +36,7 @@ function loadjsonconfig() {
         jsonConfig[value].container_items = "";
 
         jsonConfig[value].title = config[value].title;
+        jsonConfig[value].tips = config[value].tips;
 
         for (var i in config[value].talk) {
             // console.log(config[value].talk[i]);

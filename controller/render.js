@@ -3,10 +3,11 @@ const md5 = require('md5')
 const path = require('path')
 const ffmpeg = require('ffmpeg')
 const rootPath = path.resolve(__dirname + "/..")
+const EventEmitter = require('events');
 var execSync = require('child_process').execSync;
 
 // 默认大小
-const __SIZE = 500;
+const __SIZE = 300;
 
 // 生成对应字幕
 function renderAss(templateName, sentences, filename) {
@@ -16,8 +17,7 @@ function renderAss(templateName, sentences, filename) {
 
     var exists = fs.existsSync(templatePath)
     if (exists == false) {
-        console.error("文件不存在");
-        return "";
+        console.error("模板文件不存在");
     }
 
     template = fs.readFileSync(templatePath, "utf8") //先读文件  
@@ -35,7 +35,7 @@ function renderAss(templateName, sentences, filename) {
     return outputFilePath
 }
 
-function makeGifWithFfmpeg(templateName, sentences, filename) {
+function makeGifWithFfmpeg(templateName, sentences, filename, myEmitter) {
     assPath = renderAss(templateName, sentences, filename)
     gifPath = "./public/cache/" + filename
     videoPath = "./public/templates/" + templateName + "/template.mp4"
@@ -62,6 +62,8 @@ function makeGifWithFfmpeg(templateName, sentences, filename) {
             try {
                 execSync(cmd);
                 console.log("生成gif成功")
+
+                myEmitter.emit('event');
             } catch (e) {
                 console.log(e);
             }
@@ -72,14 +74,15 @@ function makeGifWithFfmpeg(templateName, sentences, filename) {
     }
 }
 
-function renderGif(templateName, sentences) {
+function renderGif(templateName, sentences, myEmitter) {
     filename = templateName + "-" + md5(JSON.stringify(sentences)) + ".gif"
     gifPath = rootPath + "/public/cache/" + filename
     var exists = fs.existsSync(rootPath + "/public/cache/" + filename)
     if (exists) {
+        myEmitter.emit('event');
         return filename
     } else {
-        makeGifWithFfmpeg(templateName, sentences, filename)
+        makeGifWithFfmpeg(templateName, sentences, filename, myEmitter)
         return filename
     }
 }
@@ -95,11 +98,18 @@ class Render {
         req.on("end", function () {
             console.log(str);
             var sentences = JSON.parse(str);
-            var filename = renderGif(name, sentences);
-            res.send('<p><a href="/cache/' + filename + '" target="_blank"><p>点击下载</p></a></p>');
+
+            // 创建一个只针对这个action的
+            const myEmitter = new EventEmitter();
+
+            myEmitter.once('event', () => {
+                res.send('<p><a href="/cache/' + filename + '" target="_blank"><p>点击下载</p></a></p>');
+            });
+
+            var filename = renderGif(name, sentences, myEmitter);
+            // res.send('<p><a href="/cache/' + filename + '" target="_blank"><p>点击下载</p></a></p>');
         });
     }
-
 }
 
 module.exports = new Render();
