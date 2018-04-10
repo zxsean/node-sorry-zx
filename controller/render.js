@@ -91,6 +91,8 @@ function renderGif(templateName, sentences, myEmitter) {
 
 class Render {
     action(req, res, next) {
+        console.log("生成gif文件的ip:" + req.ip)
+
         var name = req.params.name;
         var sentences = req.body;
         var str = "";
