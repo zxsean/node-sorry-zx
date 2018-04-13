@@ -22,6 +22,14 @@ router.get('/reloadconfig', function (req, res, next) {
 
 //选择模板页面
 router.get('/:name', function (req, res, next) {
+  // 检测斜杠
+  if (!req.url.toString().endsWith('/')) {
+    // console.log("后缀没斜杠,重定向到有斜杠的__" + req.url + "/__name:" + req.params.name);
+    res.redirect(req.url + "/");
+
+    return;
+  }
+
   console.log("页面:" + req.params.name + "_连接ip:" + req.ip);
   // 定义一个临时字典
   var _tempConfig = loadjsonconfig.jsonConfig[req.params.name];
