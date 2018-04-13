@@ -4,6 +4,11 @@ var sidebar_close_btn = document.getElementById("sidebar_close")
 var sidebar           = document.getElementById("sidebar")
 var result            = document.getElementById("result")
 
+// 添加反斜杠
+if (!document.location.toString().endsWith('/')) {
+    document.location = document.location + "/";
+}
+ 
 function make_body() {
     var body = {}
 
@@ -41,6 +46,8 @@ function submit() {
             submit_btn.disabled = false;
         }
     };
+
+    // console.log(document.location.toString())
 
     save_input()
     xhttp.open("POST", "make", true);
