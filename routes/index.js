@@ -22,6 +22,7 @@ router.get('/reloadconfig', function (req, res, next) {
 
 //选择模板页面
 router.get('/:name', function (req, res, next) {
+  console.log("页面:" + req.params.name + "_连接ip:" + req.ip);
   // 定义一个临时字典
   var _tempConfig = loadjsonconfig.jsonConfig[req.params.name];
 
